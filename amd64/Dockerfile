@@ -1,7 +1,4 @@
-FROM locorobo/docker-buck:latest
-
-RUN apt-key adv --keyserver pgp.mit.edu --recv-keys D57D95AF93178A7C && \
-    apt-key adv --keyserver pgp.mit.edu --recv-keys 7DE089671804772E
+FROM locorobo/docker-buck:buck-cross
 
 # set up & update apt repositorys
 RUN sudo sh -c "echo 'deb http://ftp.us.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list"
@@ -9,9 +6,9 @@ RUN sudo sh -c "echo 'deb-src http://ftp.us.debian.org/debian/ stretch main cont
 RUN sudo apt-get update
 
 # install build tools
-RUN sudo apt-get install -y unzip supervisor vim tmux cmake clang build-essential curl
+RUN sudo apt-get install -y unzip supervisor vim tmux cmake g++-arm-linux-gnueabihf gcc-arm-linux-gnueabihf clang build-essential curl
 
-# install amd64 deps
+# install armhf deps
 RUN sudo apt-get -t testing install -y libwebsockets-dev
 RUN sudo apt-get install -y uuid-dev libcurl4-openssl-dev libglib2.0-dev libpulse-dev libunwind-dev libc++-dev libsqlite3-dev
 
