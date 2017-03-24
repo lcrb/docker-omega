@@ -1,5 +1,8 @@
 FROM locorobo/docker-buck:latest
 
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys D57D95AF93178A7C && \
+    apt-key adv --keyserver pgp.mit.edu --recv-keys 7DE089671804772E
+
 # set up & update apt repositorys
 RUN sudo sh -c "echo 'deb http://ftp.us.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list"
 RUN sudo sh -c "echo 'deb-src http://ftp.us.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list"
