@@ -8,6 +8,9 @@ RUN sudo apt-get update
 # install build tools
 RUN sudo apt-get install -y unzip supervisor vim tmux cmake g++-arm-linux-gnueabihf gcc-arm-linux-gnueabihf clang build-essential curl
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
 # install armhf deps
 RUN sudo apt-get -t testing install -y libwebsockets-dev
 RUN sudo apt-get install -y uuid-dev libcurl4-openssl-dev libglib2.0-dev libpulse-dev libunwind-dev libc++-dev libsqlite3-dev
