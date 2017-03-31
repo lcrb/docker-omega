@@ -6,7 +6,7 @@ RUN sudo sh -c "echo 'deb-src http://ftp.us.debian.org/debian/ stretch main cont
 RUN sudo apt-get update
 
 # install build tools
-RUN sudo apt-get install -y unzip supervisor vim tmux cmake g++-arm-linux-gnueabihf gcc-arm-linux-gnueabihf clang build-essential curl
+RUN sudo apt-get install -y unzip supervisor vim tmux cmake g++-arm-linux-gnueabihf gcc-arm-linux-gnueabihf clang build-essential curl valgrind
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
