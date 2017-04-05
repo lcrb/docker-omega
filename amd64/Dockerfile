@@ -13,7 +13,12 @@ RUN sudo apt-get install -y nodejs
 
 # install armhf deps
 RUN sudo apt-get -t testing install -y libwebsockets-dev
-RUN sudo apt-get install -y uuid-dev libcurl4-openssl-dev libglib2.0-dev libpulse-dev libunwind-dev libc++-dev libsqlite3-dev
+RUN sudo apt-get install -y uuid-dev libglib2.0-dev libpulse-dev libunwind-dev libc++-dev libsqlite3-dev
+
+# install libcurl matching yocto
+RUN wget http://curl.haxx.se/download/curl-7.50.1.tar.bz2
+RUN tar -xvjf curl-7.50.1.tar.bz2
+RUN cd curl-7.50.1 && ./configure --disable-dict --without-gnutls --disable-gopher --disable-imap --enable-ipv6 --without-gssapi --disable-ldap --disable-ldaps --without-libidn --without-libssh2 --disable-pop3 --disable-proxy --without-librtmp --disable-rtsp --disable-smb --disable-smtp --with-ssl --with-random=/dev/urandom --disable-telnet --disable-tftp --prefix=/usr && make && sudo make install && sudo ldconfig
 
 # install lcm
 RUN wget https://github.com/lcrb/lcm/archive/v.1.3.1-c-typeinfo-make.tar.gz
