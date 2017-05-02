@@ -1,5 +1,9 @@
 FROM locorobo/docker-buck:buck-cross
 
+RUN wget https://github.com/git-lfs/git-lfs/releases/download/v2.1.0/git-lfs-linux-amd64-2.1.0.tar.gz
+RUN tar -xvf git-lfs-linux-amd64-2.1.0.tar.gz && cd git-lfs-2.1.0 && ./install.sh
+RUN git lfs install
+
 # set up & update apt repositorys
 RUN sudo sh -c "echo 'deb http://ftp.us.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list"
 RUN sudo sh -c "echo 'deb-src http://ftp.us.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list"
