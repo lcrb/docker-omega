@@ -17,7 +17,7 @@ RUN sudo apt-get install -y nodejs
 
 # install armhf deps
 RUN sudo apt-get -t testing install -y libwebsockets-dev:armhf
-RUN sudo apt-get install -y uuid-dev:armhf libglib2.0-dev:armhf libpulse-dev:armhf libunwind-dev:armhf libc++-dev:armhf libsqlite3-dev:armhf
+RUN sudo apt-get install -y uuid-dev:armhf libglib2.0-dev:armhf libpulse-dev:armhf libunwind-dev:armhf libc++-dev:armhf libsqlite3-dev:armhf libavcodec-dev:armhf
 
 # install libcurl matching yocto
 RUN wget http://curl.haxx.se/download/curl-7.50.1.tar.bz2
