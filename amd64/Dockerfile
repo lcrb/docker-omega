@@ -1,5 +1,20 @@
-FROM locorobo/docker-buck:buck-cross
+FROM ubuntu
 
+RUN apt-get update && apt-get install -y git gcc gdb g++ automake default-jdk ant python make python-dev gcc-arm-none-eabi gdb-arm-none-eabi openocd sudo
+
+RUN apt-get install -y autotools-dev automake libtool pkg-config 
+RUN apt-get install -y libssl-dev libglib2.0-dev 
+
+# Install watchman for buck
+RUN git clone https://github.com/facebook/watchman.git
+RUN cd watchman && ./autogen.sh && ./configure && make && make install
+
+# Install buck
+RUN git clone https://github.com/facebook/buck.git
+RUN cd buck && ant 
+RUN cd buck && ln -s ${PWD}/bin/buck /usr/bin/buck
+
+# Install LFS
 RUN wget https://github.com/git-lfs/git-lfs/releases/download/v2.1.0/git-lfs-linux-amd64-2.1.0.tar.gz
 RUN tar -xvf git-lfs-linux-amd64-2.1.0.tar.gz && cd git-lfs-2.1.0 && ./install.sh
 RUN git lfs install
@@ -12,10 +27,11 @@ RUN sudo apt-get update
 # install build tools
 RUN sudo apt-get install -y unzip supervisor vim tmux cmake g++-arm-linux-gnueabihf gcc-arm-linux-gnueabihf clang build-essential curl valgrind
 
+# Install Node
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
-# install armhf deps
+# install amd64 deps
 RUN sudo apt-get -t testing install -y libwebsockets-dev
 RUN sudo apt-get install -y uuid-dev libglib2.0-dev libpulse-dev libunwind-dev libc++-dev libsqlite3-dev libavcodec-dev
 
