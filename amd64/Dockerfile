@@ -1,5 +1,8 @@
 FROM ubuntu
 
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys D57D95AF93178A7C && \
+    apt-key adv --keyserver pgp.mit.edu --recv-keys 7DE089671804772E
+
 RUN apt-get update && apt-get install -y git gcc gdb g++ automake default-jdk ant python make python-dev gcc-arm-none-eabi gdb-arm-none-eabi openocd sudo wget
 
 RUN apt-get install -y autotools-dev automake libtool pkg-config 
