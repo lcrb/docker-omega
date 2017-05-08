@@ -1,0 +1,10 @@
+# Application Dependencies
+uuid-dev
+libglib2.0-dev
+libpulse-dev
+libunwind-dev
+libc++-dev
+libsqlite3-dev
+libavcodec-dev
+libssl-dev
+libglib2.0-dev

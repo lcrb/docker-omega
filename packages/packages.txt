@@ -1,0 +1,32 @@
+# Base Development Packages
+git
+gcc
+gdb
+g++
+python
+python-dev
+openocd
+libtool 
+pkg-config
+
+# Development Command Line Tools
+sudo
+wget
+curl
+unzip
+vim
+tmux
+
+# Additional Dev Packages
+make
+autotools-dev
+automake 
+automake
+supervisor
+cmake
+clang
+build-essential
+valgrind
+
+# Buck
+ant

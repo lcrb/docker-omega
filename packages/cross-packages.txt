@@ -1,0 +1,4 @@
+# Base Development Packages
+g++-arm-linux-gnueabihf
+gcc-arm-linux-gnueabihf
+crossbuild-essential-armhf
